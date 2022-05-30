@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content%}
+<table>
+    <tr>
+        <th>Recipe</th>
+        <th>Ingridients</th>
+    </tr>
+{% for item in data %}
+    <tr>
+        <td><a href="/{{item['name']}}">{{ item['name'] }}</a></td>
+        <td>
+        {% for ingridient in item['ingridients'].split(',') %}
+        <a href="/{{ingridient.strip()}}">{{ ingridient.strip() }}</a>
+            {% endfor %}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock%}
